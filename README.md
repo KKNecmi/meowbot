@@ -20,6 +20,8 @@ A tiny command-line tool that can spin up **one or hundreds of Minecraft bots** 
 
 ## 🚀 Features
 
+<p align="left"> <img src="https://github.com/KKNecmi/meowbot/blob/main/image/screenshot.png" alt="CMD Screenshot"/> </p>
+
 | Command                | What it does                                    |
 | ---------------------- | ----------------------------------------------- |
 | `botname <name>`       | Set the **base username** (default: `meowbot`). |
