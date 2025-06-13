@@ -179,9 +179,9 @@ function startBots(host, port, count = botSize) {
   let connectedBots = 0;
   const maxBots = count;
 
-  const interval = setInterval(() => {
+  const joinTimer = setInterval(() => {
     if (connectedBots >= maxBots) {
-      clearInterval(interval);
+      clearInterval(joinTimer);
       return;
     }
 
@@ -201,15 +201,24 @@ function startBots(host, port, count = botSize) {
       console.log(`[${bot.username}] Connected to ${host}:${port}`);
     });
 
-    bot.on('kicked', (reason) => console.log(`[${bot.username}] Kicked: ${reason}`));
+    bot.on('kicked', (rawReason) => {
+      const reason =
+        typeof rawReason === 'string' ? rawReason : rawReason?.text || JSON.stringify(rawReason);
 
-    bot.on('error', (err) => {
-      console.log(`[${bot.username}] Error: ${err.message}`);
+      if (reason.toLowerCase().includes('server is full')) {
+        console.log(`[${bot.username}] kicked because server is full – no more bots will join.`);
+        clearInterval(joinTimer);
+        return;
+      }
+
+      console.log(`[${bot.username}] kicked: ${reason}`);
     });
+
+    bot.on('error', (err) => console.log(`[${bot.username}] Error: ${err.message}`));
 
     bots.push(bot);
     connectedBots++;
-  }, 2500); // Join Delay
+  }, 4500); // Join Delay
 }
 
 function stopBots() {
