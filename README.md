@@ -1,6 +1,5 @@
 # meowbot — Multi-Instance Mineflayer CLI
 
-[![GitHub release](https://img.shields.io/github/release/KKNecmi/meowbot?include_prereleases=&sort=semver&color=blue)](https://github.com/KKNecmi/meowbot/releases/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#-license)
 [![issues - meowbot](https://img.shields.io/github/issues/KKNecmi/meowbot?color=darkgreen)](https://github.com/KKNecmi/meowbot/issues)
 
